@@ -1,26 +1,25 @@
 import Config from './config';
+import Visualizer from './visualizer';
 
 class Swave {
 
-    private element: HTMLElement;
-    private config:any;
+    private hostElement: HTMLElement;
+    private config: Config;
     private audio: HTMLAudioElement;
     private audioCtx: AudioContext;
     private audioSource: MediaElementAudioSourceNode;
     private gainNode: GainNode;
     private analyserNode: AnalyserNode;
+    private visualizer: Visualizer;
 
-    constructor (element: HTMLElement, config = {}) {
-        this.element = element;
+    constructor (hostElement: HTMLElement, config = {}) {
+        this.hostElement = hostElement;
         this.config = new Config(config);
+        this.loadConfig();
         this.loadAudio();
     }
 
     private loadAudio () {
-        this.audio = new Audio(this.config.file);
-        this.audio.crossOrigin = this.config.crossOrigin;
-        this.audio.controls = this.config.showControls;
-        this.audio.autoplay = this.config.autoPlay;
         this.audioCtx = new AudioContext();
         this.audioSource = this.audioCtx.createMediaElementSource(this.audio)
         this.gainNode = this.audioCtx.createGain();
@@ -43,6 +42,16 @@ class Swave {
         }
     }
 
+    private loadConfig () {
+        this.audio = new Audio(this.config.file);
+        this.audio.crossOrigin = this.config.crossOrigin;
+        this.audio.controls = this.config.showControls;
+        this.audio.autoplay = this.config.autoPlay;
+        if (this.config.enableVisualization) {
+            this.enableVisualization();
+        }
+    }
+
     public play (): void {
         this.audio.play();
     }
@@ -62,4 +71,14 @@ class Swave {
         }
     }
 
+    public enableVisualization (): void {
+        this.visualizer = new Visualizer(this.hostElement, this.analyserNode);
+    }
+
+    public disableVisualization (): void {
+        if (this.visualizer) {
+            this.visualizer.destroyCanvas();
+            this.visualizer = null;
+        }
+    }
 }
