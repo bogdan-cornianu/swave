@@ -1,4 +1,4 @@
-import {config as defaultConfig} from './config';
+import Config from './config';
 
 class Swave {
 
@@ -12,9 +12,8 @@ class Swave {
 
     constructor (element: HTMLElement, config = {}) {
         this.element = element;
-        this.config = {...defaultConfig, ...config};
+        this.config = new Config(config);
         this.loadAudio();
-
     }
 
     private loadAudio () {
