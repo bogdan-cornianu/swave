@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: './src/swave.js',
+    entry: './src/swave.ts',
     devtool: 'inline-source-map',
     output: {
         filename: 'swave.js',
@@ -22,8 +22,24 @@ module.exports = {
                         presets: ['@babel/preset-env']
                     }
                 }
-            }
+            },
+            {
+                test: /\.tsx?$/,
+                use:  [{
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env']
+                    }
+                }, 
+                {
+                    loader: 'ts-loader'
+                }],
+                exclude: /node_modules/
+            }         
         ]
+    },
+    resolve: {
+        extensions: [ '.tsx', '.ts', '.js' ]
     },
     plugins: [
         new CleanWebpackPlugin(['dist/*.*']),
