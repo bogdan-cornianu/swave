@@ -109,3 +109,6 @@ class Swave {
         }
     }
 }
+
+declare var window: any;
+window.Swave = Swave;

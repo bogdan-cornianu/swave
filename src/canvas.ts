@@ -1,7 +1,3 @@
-import Config from "./config";
-
-declare var window: any;
-
 export default class Canvas {
     protected ctx: CanvasRenderingContext2D;
     protected canvas: HTMLCanvasElement;
