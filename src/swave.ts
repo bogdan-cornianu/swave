@@ -111,4 +111,4 @@ export default class Swave {
 }
 
 declare var window: any;
-window.swave = new Swave(document.querySelector('.swave-container'), {audioUrl: 'https://bogdancornianu.com/content/mutter.mp3'});
+window.Swave = Swave;
