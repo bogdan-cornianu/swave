@@ -26,7 +26,6 @@ class Swave {
         this.analyserNode = this.audioCtx.createAnalyser();
         this.setAudioNode(this.gainNode, null, this.analyserNode);
         this.setAudioNode(this.analyserNode, this.gainNode, null);
-
     }
 
     private setAudioNode (node: AnalyserNode | GainNode, previousNode?: AnalyserNode | GainNode, nextNode?: AnalyserNode | GainNode) {
@@ -47,13 +46,13 @@ class Swave {
         this.audio.crossOrigin = this.config.crossOrigin;
         this.audio.controls = this.config.showControls;
         this.audio.autoplay = this.config.autoPlay;
-        if (this.config.enableVisualization) {
-            this.enableVisualization();
-        }
     }
 
     public play (): void {
         this.audio.play();
+        if (this.config.enableVisualization) {
+            this.enableVisualization();
+        }
     }
 
     public stop (): void {
