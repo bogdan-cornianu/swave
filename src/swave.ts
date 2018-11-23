@@ -19,7 +19,7 @@ class Swave {
         this.loadAudio();
     }
 
-    private loadAudio () {
+    private loadAudio (): void {
         this.audioCtx = new AudioContext();
         this.audioSource = this.audioCtx.createMediaElementSource(this.audio)
         this.gainNode = this.audioCtx.createGain();
@@ -28,7 +28,7 @@ class Swave {
         this.setAudioNode(this.analyserNode, this.gainNode, null);
     }
 
-    private setAudioNode (node: AnalyserNode | GainNode, previousNode?: AnalyserNode | GainNode, nextNode?: AnalyserNode | GainNode) {
+    private setAudioNode (node: AnalyserNode | GainNode, previousNode?: AnalyserNode | GainNode, nextNode?: AnalyserNode | GainNode): void {
         if (previousNode) {
             previousNode.connect(node);
         } else {
@@ -41,8 +41,8 @@ class Swave {
         }
     }
 
-    private loadConfig () {
-        this.audio = new Audio(this.config.file);
+    private loadConfig (): void {
+        this.audio = new Audio(this.config.audioUrl);
         this.audio.crossOrigin = this.config.crossOrigin;
         this.audio.controls = this.config.showControls;
         this.audio.autoplay = this.config.autoPlay;
@@ -101,5 +101,11 @@ class Swave {
 
     public getCurrentTime (): number {
         return this.audio ? this.audio.currentTime : null;
+    }
+
+    public changeAudio(audioUrl: string): void {
+        if (audioUrl !== this.audio.currentSrc) {
+            this.audio.src = audioUrl;
+        }
     }
 }

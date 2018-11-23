@@ -2,7 +2,7 @@ export default class Config {
     public showControls: boolean = false;
     public autoPlay: boolean = false;
     public enableVisualization: boolean = true;
-    public file: string = '';
+    public audioUrl: string = '';
     public crossOrigin: string = 'anonymous';
 
     constructor (fromObj: any) {
