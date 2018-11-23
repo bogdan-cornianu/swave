@@ -1,7 +1,7 @@
 import Config from './config';
 import Visualizer from './visualizer';
 
-class Swave {
+export default class Swave {
 
     private hostElement: HTMLElement;
     private config: Config;
@@ -109,3 +109,6 @@ class Swave {
         }
     }
 }
+
+declare var window: any;
+window.swave = new Swave(document.querySelector('.swave-container'), {audioUrl: 'https://bogdancornianu.com/content/mutter.mp3'});
