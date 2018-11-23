@@ -66,12 +66,20 @@ class Swave {
 
     public setVolume (volume: number): void {
         if (this.gainNode) {
-            this.gainNode.gain.value = volume
+            if (volume > 1) {
+                volume = 1;
+            }
+            if (volume < 0.1) {
+                volume = 0.1;
+            }
+            this.gainNode.gain.value = volume * volume;
         }
     }
 
     public enableVisualization (): void {
-        this.visualizer = new Visualizer(this.hostElement, this.analyserNode);
+        if (!this.visualizer) {
+            this.visualizer = new Visualizer(this.hostElement, this.analyserNode);
+        }
     }
 
     public disableVisualization (): void {
@@ -80,4 +88,15 @@ class Swave {
             this.visualizer = null;
         }
     }
+
+    public setCurrentTime (time: number): void {
+
+    }
+
+    public getCurrentTime (): number {
+        return 0;
+    }
 }
+
+declare var window: any;
+window.swave = new Swave(document.querySelector('.swave-container'), {file: 'https://bogdancornianu.com/content/mutter.mp3'});

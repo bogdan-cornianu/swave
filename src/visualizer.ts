@@ -37,4 +37,8 @@ export default class Visualizer extends Canvas {
         }
         draw();
     }
+
+    public removeVisualizations () {
+        this.destroyCanvas();
+    }
 }
