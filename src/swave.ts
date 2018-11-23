@@ -89,14 +89,17 @@ class Swave {
         }
     }
 
-    public setCurrentTime (time: number): void {
+    public getDuration (): number {
+        return this.audio ? this.audio.duration : null;
+    }
 
+    public setCurrentTime (time: number): void {
+        if (time <= this.audio.duration) {
+            this.audio.currentTime = time;
+        }
     }
 
     public getCurrentTime (): number {
-        return 0;
+        return this.audio ? this.audio.currentTime : null;
     }
 }
-
-declare var window: any;
-window.swave = new Swave(document.querySelector('.swave-container'), {file: 'https://bogdancornianu.com/content/mutter.mp3'});

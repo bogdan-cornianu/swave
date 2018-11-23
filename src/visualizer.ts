@@ -22,11 +22,11 @@ export default class Visualizer extends Canvas {
             this.ctx.fillStyle = 'rgb(255, 255, 255)';
             this.ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
-            var barWidth = (WIDTH / bufferLengthAlt) * 2.5;
-            var barHeight;
-            var x = 0;
+            let barWidth = (WIDTH / bufferLengthAlt) * 2.5;
+            let barHeight;
+            let x = 0;
 
-            for (var i = 0; i < bufferLengthAlt; i++) {
+            for (let i = 0; i < bufferLengthAlt; i++) {
                 barHeight = dataArrayAlt[i];
 
                 this.ctx.fillStyle = 'rgb(' + (barHeight + 100) + ',15,156)';
