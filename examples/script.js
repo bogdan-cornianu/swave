@@ -9,6 +9,9 @@ let playerManager = {
     audioUrl: null,
     overlay: null,
     volumeInput: null,
+    seekerElement: null,
+    seekerTimer: null,
+    audioDuration: 0,
 
     init: function () {
         this.getElements();
@@ -23,6 +26,7 @@ let playerManager = {
         this.canvasContainer = document.querySelector('.swave-canvas-wrapper');
         this.overlay = document.querySelector('.overlay');
         this.volumeInput = document.querySelector('.volume-input');
+        this.seekerElement = document.querySelector('.seeker');
     },
 
     addClickEvents: function () {
@@ -30,12 +34,14 @@ let playerManager = {
             this.playerPlays = true;
             this.togglePlayPause();
             this.swave.play();
+            this.startSeeker();
         },false);
 
         this.pauseButton.addEventListener("click", () => {
             this.playerPlays = false;
             this.togglePlayPause();
             this.swave.pause();
+            this.startSeeker();
         },false);
 
         this.loadAudioButton.addEventListener("click", () => {
@@ -53,6 +59,8 @@ let playerManager = {
 
     initSwave: function () {
         this.swave = new Swave(this.canvasContainer, {audioUrl:this.audioUrl});
+        this.audioDuration = this.swave.getDuration();
+        console.log(this.audioDuration)
     },
 
     togglePlayPause: function () {
@@ -71,6 +79,17 @@ let playerManager = {
         } else {
             this.overlay.style.display = "block"
         }
+    },
+
+    startSeeker () {
+        this.seekerTimer = setInterval(() => {
+            this.seekerElement.value = (this.swave.getCurrentTime() / this.swave.getDuration()) * 100;
+            console.log(this.swave.getCurrentTime(), this.audioDuration)
+        }, 200)
+    },
+
+    stopSeeker () {
+        clearInterval(this.seekerTimer);
     },
 
     resize: function () {
