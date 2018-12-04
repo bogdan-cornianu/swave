@@ -58,9 +58,8 @@ let playerManager = {
     },
 
     initSwave: function () {
-        this.swave = new Swave(this.canvasContainer, {audioUrl:this.audioUrl});
+        this.swave = new Swave(this.canvasContainer, {audioUrl: this.audioUrl});
         this.audioDuration = this.swave.getDuration();
-        console.log(this.audioDuration)
     },
 
     togglePlayPause: function () {
@@ -84,7 +83,6 @@ let playerManager = {
     startSeeker () {
         this.seekerTimer = setInterval(() => {
             this.seekerElement.value = (this.swave.getCurrentTime() / this.swave.getDuration()) * 100;
-            console.log(this.swave.getCurrentTime(), this.audioDuration)
         }, 200)
     },
 
