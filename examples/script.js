@@ -81,9 +81,14 @@ let playerManager = {
     },
 
     startSeeker () {
+        this.seekerElement.max = this.swave.getDuration();
         this.seekerTimer = setInterval(() => {
-            this.seekerElement.value = (this.swave.getCurrentTime() / this.swave.getDuration()) * 100;
+            this.seekerElement.value = this.swave.getCurrentTime();
         }, 200)
+    },
+
+    setSeeker (value) {
+        this.swave.setCurrentTime(value);
     },
 
     stopSeeker () {
