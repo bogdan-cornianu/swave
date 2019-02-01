@@ -6,7 +6,7 @@
     <title>Swave Examples</title>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="examples/style.css">
 </head>
 <body>
 
@@ -21,7 +21,7 @@
             <div class="swave-canvas-wrapper"></div>
             <div class="swave-controls-wrapper">
                 <div class="swave-seeker">
-                    <input class="seeker" type="range" min="0" max="100" step="0.1" value="0">
+                    <input class="seeker" type="range" min="0" max="100" step="0.1" value="0" oninput="playerManager.setSeeker(this.value)">
                 </div>
                 <div class="swave-controls">
                     <div class="title">
@@ -43,7 +43,6 @@
         <div class="overlay"></div>
     </div>
 
-    <script src="script.js"></script>
-    <script type="text/javascript" src="../dist/swave.js"></script>
+    <script src="examples/script.js"></script>
 </body>
 </html>
