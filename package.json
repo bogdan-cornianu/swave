@@ -21,7 +21,10 @@
     "web",
     "player"
   ],
-  "author": "Bogdan Cornianu, Cosmin Seviciu",
+  "author": "Bogdan Cornianu",
+  "contributors": [{
+    "name": "Cosmin Seviciu"
+  }],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bogdan-cornianu/swave/issues"
