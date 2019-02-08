@@ -23,7 +23,8 @@
   ],
   "author": "Bogdan Cornianu",
   "contributors": [{
-    "name": "Cosmin Seviciu"
+    "name": "Cosmin Seviciu",
+    "email": "zetcoby@gmail.com"
   }],
   "license": "MIT",
   "bugs": {
