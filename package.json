@@ -1,6 +1,6 @@
 {
   "name": "swave",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A customizable web audio player with visualizations",
   "main": "dist/swave.js",
   "types": "dist/swave.d.ts",
@@ -22,10 +22,12 @@
     "player"
   ],
   "author": "Bogdan Cornianu",
-  "contributors": [{
-    "name": "Cosmin Seviciu",
-    "email": "zetcoby@gmail.com"
-  }],
+  "contributors": [
+    {
+      "name": "Cosmin Seviciu",
+      "email": "zetcoby@gmail.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/bogdan-cornianu/swave/issues"
