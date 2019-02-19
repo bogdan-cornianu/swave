@@ -1,3 +1,10 @@
 src
 tsconfig.json
 jestconfig.json
+.vscode
+.sonarlint
+.idea
+_config.yml
+webpack.common.js
+webpack.dev.js
+webpack.prod.js

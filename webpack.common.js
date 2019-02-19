@@ -4,12 +4,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     mode: 'development',
-    entry: './src/swave.ts',
+    entry: './src/index.ts',
     devtool: 'inline-source-map',
     output: {
         filename: 'swave.js',
         path: path.resolve(__dirname, 'dist'),
-        publicPath: '/'
+        publicPath: '/',
+        library: "swave",
+        libraryTarget: "umd"
     },
     module: {
         rules: [
