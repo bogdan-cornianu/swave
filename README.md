@@ -17,7 +17,7 @@ The first argument of the constructor is the html element where the player shoul
 The second argument is a configuration object:
 * **`audioUrl`: required**, the url for the audio to be played
 * `enableVisualization`: true by default
-* `autoPlay`: disabled by default
+* `autoPlay`: false by default
 * `crossOrigin`: "anonymous" by default
 * `showControls`: false by default. If enabled, will display the audio element's playback controls
   
@@ -34,8 +34,8 @@ Swave exposes several methods which you can use to build an audio player:
 * `changeAudio(string)`: the new url of the audio  
 
 ## Contributing
-### If you find any bugs or have ideas of how Swave can be improved, please open an issue at https://github.com/bogdan-cornianu/swave/issues
-### If you would like to contribute code, please have a look at our open issues (https://github.com/bogdan-cornianu/swave/issues), pick something you like and have fun :)
+###### If you find any bugs or have ideas of how Swave can be improved, please open an issue at https://github.com/bogdan-cornianu/swave/issues
+###### If you would like to contribute code, please have a look at our open issues (https://github.com/bogdan-cornianu/swave/issues), pick something you like and have fun :)
 * clone the repo
 * `npm install` to install the dev dependencies
 * `npm run start` will start the webpack dev server
