@@ -9,11 +9,11 @@ Live Demo: https://bogdan-cornianu.github.io/swave/examples/
 
 ## Usage
 ```
-let swave = new Swave(document.querySelector('.swave-canvas-wrapper'), {audioUrl:'url..'});
+let swave = new Swave(document.querySelector('.swave-canvas-wrapper'), {audioUrl: 'url...'});
 swave.play();
 ```
-Swave uses a hidden HTML5 audio element for audio streaming and a canvas element to draw the sound bars.  
-The first argument of the constructor is the html element where the player should be embedded.  
+Swave uses [Web Audio APIs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) for visualizations,  [HTMLAudioElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement) for audio streaming and a [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) element to draw the sound bars.  
+The first argument of the constructor is the html element where the canvas should be drawn.  
 The second argument is a configuration object:
 * **`audioUrl`: required**, the url for the audio to be played
 * `enableVisualization`: true by default
