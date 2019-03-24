@@ -9,7 +9,7 @@ Live Demo: https://bogdan-cornianu.github.io/swave/examples/
 
 ## Usage
 ```
-let swave = new Swave(document.querySelector('.swave-canvas-wrapper'), {audioUrl: 'url...'});
+let swave = new Swave({audioUrl: 'url...'});
 swave.play();
 ```
 Swave uses [Web Audio APIs](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) for visualizations,  [HTMLAudioElement](https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement) for audio streaming and a [Canvas](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) element to draw the sound bars.  
