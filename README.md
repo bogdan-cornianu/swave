@@ -16,7 +16,6 @@ Swave uses [Web Audio APIs](https://developer.mozilla.org/en-US/docs/Web/API/Web
 The first argument of the constructor is the html element where the canvas should be drawn.  
 The second argument is a configuration object:
 * **`audioUrl`: required**, the url for the audio to be played
-* `enableVisualization`: false by default
 * `autoPlay`: false by default
 * `crossOrigin`: "anonymous" by default
 * `showControls`: false by default. If enabled, will display the audio element's playback controls
