@@ -58,7 +58,8 @@ let playerManager = {
     },
 
     initSwave: function () {
-        this.swave = new Swave(this.canvasContainer, {audioUrl: this.audioUrl});
+        this.swave = new Swave({audioUrl: this.audioUrl});
+        this.swave.enableVisualization(this.canvasContainer)
         this.audioDuration = this.swave.getDuration();
     },
 
@@ -97,7 +98,7 @@ let playerManager = {
 
     resize: function () {
         this.swave.disableVisualization();
-        this.swave.enableVisualization();
+        this.swave.enableVisualization(this.canvasContainer);
     }
 
 }
