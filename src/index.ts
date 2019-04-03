@@ -1,1 +1,2 @@
-export {default as Swave} from "./swave";
+import { Swave as swave } from './swave';
+export const Swave = swave;
