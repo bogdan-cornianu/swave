@@ -1,1 +1,0 @@
-export {default as Swave} from "./src/swave";
