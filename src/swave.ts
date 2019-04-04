@@ -1,7 +1,7 @@
 import Config from './config';
 import Visualizer from './visualizer';
 
-export default class Swave {
+export class Swave {
 
     private hostElement: HTMLElement;
     private config: Config;
