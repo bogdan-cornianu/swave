@@ -1,9 +1,8 @@
 import Config from './config';
 import Visualizer from './visualizer';
 
-export default class Swave {
+export class Swave {
 
-    private hostElement: HTMLElement;
     private config: Config;
     private audio: HTMLAudioElement;
     private audioCtx: AudioContext;
@@ -12,8 +11,7 @@ export default class Swave {
     private analyserNode: AnalyserNode;
     private visualizer: Visualizer;
 
-    constructor (hostElement: HTMLElement, config = {}) {
-        this.hostElement = hostElement;
+    constructor (config = {}) {
         this.config = new Config(config);
         this.loadConfig();
         this.loadAudio();
@@ -50,9 +48,6 @@ export default class Swave {
 
     public play (): void {
         this.audio.play();
-        if (this.config.enableVisualization) {
-            this.enableVisualization();
-        }
     }
 
     public stop (): void {
@@ -76,9 +71,9 @@ export default class Swave {
         }
     }
 
-    public enableVisualization (): void {
-        if (!this.visualizer) {
-            this.visualizer = new Visualizer(this.hostElement, this.analyserNode);
+    public enableVisualization (hostElement: HTMLElement): void {
+        if (hostElement && !this.visualizer) {
+            this.visualizer = new Visualizer(hostElement, this.analyserNode);
         }
     }
 

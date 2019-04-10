@@ -1,1 +1,2 @@
-export {default as Swave} from "./swave";
+import { Swave } from './swave';
+export default Swave;

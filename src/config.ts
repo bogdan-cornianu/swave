@@ -1,7 +1,6 @@
 export default class Config {
     public showControls: boolean = false;
     public autoPlay: boolean = false;
-    public enableVisualization: boolean = true;
     public audioUrl: string = '';
     public crossOrigin: string = 'anonymous';
 
@@ -14,6 +13,4 @@ export default class Config {
             }
         }
     }
-
-
 }
