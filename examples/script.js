@@ -60,7 +60,9 @@ let playerManager = {
     initSwave: function () {
         this.swave = new Swave({audioUrl: this.audioUrl});
         this.swave.enableVisualization(this.canvasContainer)
-        this.audioDuration = this.swave.getDuration();
+        this.swave.getDuration().then(duration => {
+            this.audioDuration = duration;
+        });
     },
 
     togglePlayPause: function () {

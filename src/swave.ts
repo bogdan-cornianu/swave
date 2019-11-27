@@ -3,13 +3,13 @@ import Visualizer from './visualizer';
 
 export class Swave {
 
-    private config: Config;
-    private audio: HTMLAudioElement;
+    private config: Config;    
     private audioCtx: AudioContext;
     private audioSource: MediaElementAudioSourceNode;
     private gainNode: GainNode;
     private analyserNode: AnalyserNode;
     private visualizer: Visualizer;
+    public audio: HTMLAudioElement;
 
     constructor (config = {}) {
         this.config = new Config(config);
@@ -84,8 +84,12 @@ export class Swave {
         }
     }
 
-    public getDuration (): number {
-        return this.audio ? this.audio.duration : null;
+    public getDuration (): Promise<number> {
+        return new Promise((resolve) => {
+            this.audio.onloadedmetadata = () => {
+                resolve(this.audio.duration);
+            }
+        });
     }
 
     public setCurrentTime (time: number): void {
@@ -96,6 +100,12 @@ export class Swave {
 
     public getCurrentTime (): number {
         return this.audio ? this.audio.currentTime : null;
+    }
+
+    public subscribeToCurrentTime (callback: Function) {
+        this.audio.ontimeupdate = () => {
+            callback(this.getCurrentTime());
+        };
     }
 
     public changeAudio(audioUrl: string): void {
