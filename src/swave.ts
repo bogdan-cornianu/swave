@@ -1,9 +1,10 @@
 import Config from './config';
 import Visualizer from './visualizer';
+import { decoder as vttDecoder } from './vtt-decoder';
 
 export class Swave {
 
-    private config: Config;    
+    private config: Config;
     private audioCtx: AudioContext;
     private audioSource: MediaElementAudioSourceNode;
     private gainNode: GainNode;
@@ -44,6 +45,7 @@ export class Swave {
         this.audio.crossOrigin = this.config.crossOrigin;
         this.audio.controls = this.config.showControls;
         this.audio.autoplay = this.config.autoPlay;
+        vttDecoder.setCaption(this.config.captionUrl);
     }
 
     public play (): void {
@@ -102,9 +104,22 @@ export class Swave {
         return this.audio ? this.audio.currentTime : null;
     }
 
+    public getCaptions() {
+        return vttDecoder.getCaptions();
+    }
+
     public subscribeToCurrentTime (callback: Function) {
         this.audio.ontimeupdate = () => {
             callback(this.getCurrentTime());
+        };
+    }
+
+    public subscribeToOnTimeUpdate (callback : Function) {
+        this.audio.ontimeupdate = () => {
+            callback({
+                curreentTime: this.getCurrentTime(),
+                captions: vttDecoder.getCaptionForTime(this.getCurrentTime())
+            });
         };
     }
 

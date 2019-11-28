@@ -48,5 +48,8 @@
     "webpack-cli": "^3.1.2",
     "webpack-dev-server": ">=3.1.11",
     "webpack-merge": "^4.1.4"
+  },
+  "dependencies": {
+    "node-webvtt": "^1.6.1"
   }
 }
