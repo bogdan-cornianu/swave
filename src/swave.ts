@@ -117,7 +117,7 @@ export class Swave {
     public subscribeToOnTimeUpdate (callback : Function) {
         this.audio.ontimeupdate = () => {
             callback({
-                curreentTime: this.getCurrentTime(),
+                currentTime: this.getCurrentTime(),
                 captions: vttDecoder.getCaptionForTime(this.getCurrentTime())
             });
         };
